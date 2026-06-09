@@ -1,0 +1,627 @@
+/* Estilos globales para IMÁGENES: asegura que sean responsivas y se muestren como bloques */
+img {
+    max-width: 100%;  /* Ancho máximo 100% del contenedor */
+    height: auto;     /* Alto automático para mantener proporciones */
+    display: block;   /* Se muestra como bloque para eliminar espacios en blanco */
+}
+
+/* RESET GLOBAL: Elimina márgenes, padding predeterminados y aplica border-box a todos los elementos */
+* {
+    margin: 0;              /* Elimina el margen externo predeterminado */
+    padding: 0;             /* Elimina el relleno interno predeterminado */
+    box-sizing: border-box; /* Incluye borde y padding en el cálculo del tamaño */
+}
+
+
+/* VARIABLES CSS: Define colores y sombras reutilizables en toda la página (tema neon oscuro) */
+:root {
+    --primary: #1a1a2e;              /* Color primario: azul oscuro para fondos principales */
+    --secondary: #16213e;            /* Color secundario: azul más oscuro */
+    --accent: #00d4ff;               /* Color de acento: cian brillante (neon) */
+    --accent-alt: #ff006e;           /* Color de acento alternativo: rosa/magenta neon */
+    --text-light: #e8e8e8;           /* Texto claro: blanco grisáceo */
+    --text-muted: #b0b0b0;           /* Texto atenuado: gris más oscuro */
+    --bg-dark: #0f0f23;              /* Fondo muy oscuro: casi negro azulado */
+    --shadow-sm: 0 2px 8px rgba(0, 212, 255, 0.1);      /* Sombra pequeña con brillo cian */
+    --shadow-md: 0 8px 16px rgba(0, 212, 255, 0.15);    /* Sombra mediana */
+    --shadow-lg: 0 16px 32px rgba(0, 212, 255, 0.2);    /* Sombra grande */
+    --shadow-glow: 0 0 20px rgba(0, 212, 255, 0.3);     /* Efecto de brillo/resplandor */
+}
+
+
+/* ESTILOS DEL BODY: Configura el fondo degradado, tipografía y color de texto general */
+body {
+    font-family: 'Segoe UI', Trebuchet MS, sans-serif; /* Tipografía: fuentes modernas sin serif */
+    background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%); /* Degradado diagonal oscuro */
+    background-attachment: fixed;  /* El fondo no se mueve al hacer scroll */
+    color: #e8e8e8;                /* Color de texto: blanco grisáceo */
+    line-height: 1.7;              /* Altura de línea: espaciado vertical entre líneas */
+    font-weight: 400;              /* Peso de fuente: normal */
+}
+
+
+/* HEADER: Barra de navegación superior fija con efecto blur y brillo */
+.header {
+    background: linear-gradient(90deg, #1a1a2e 0%, #16213e 100%); /* Degradado horizontal */
+    color: #fff;                    /* Texto blanco */
+    display: flex;                  /* Usa flexbox para alinear elementos */
+    justify-content: space-between; /* Logo a la izquierda, nav a la derecha */
+    align-items: center;            /* Alinea verticalmente al centro */
+    padding: 18px 40px;             /* Espaciado interno */
+    box-shadow: 0 4px 20px rgba(0, 212, 255, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1); /* Sombra y brillo */
+    position: sticky;               /* Se queda fijo al hacer scroll */
+    top: 0;                         /* A la parte superior */
+    z-index: 100;                   /* Sobre otros elementos */
+    backdrop-filter: blur(10px);    /* Efecto blur de vidrio esmerilado */
+    border-bottom: 1px solid rgba(0, 212, 255, 0.2); /* Borde inferior sutil */
+}
+
+
+/* LOGO: Texto del logo con gradiente y efecto de texto transparente */
+.logo {
+    font-size: 28px;                            /* Tamaño del texto */
+    font-weight: 800;                           /* Peso: muy Bold/grueso */
+    letter-spacing: 2px;                        /* Espacio entre letras */
+    background: linear-gradient(135deg, #00d4ff, #ff006e); /* Gradiente cian a rosa */
+    -webkit-background-clip: text;              /* Aplica el fondo al texto (webkit) */
+    -webkit-text-fill-color: transparent;       /* Relleno transparente del texto (webkit) */
+    background-clip: text;                      /* Aplica el fondo al texto */
+    text-transform: uppercase;                  /* Texto en mayúsculas */
+    text-shadow: 0 0 20px rgba(0, 212, 255, 0.3); /* Sombra/brillo del texto */
+}
+
+
+/* NAV: Contenedor de enlaces de navegación */
+.nav {
+    display: flex;  /* Alinea los enlaces horizontalmente */
+    gap: 5px;       /* Espacio entre elementos */
+}
+
+/* ENLACES DE NAVEGACIÓN: Estilo base para cada enlace */
+.nav a {
+    color: #e8e8e8;                         /* Color del texto: blanco grisáceo */
+    text-decoration: none;                  /* Sin subrayado */
+    padding: 10px 16px;                     /* Espaciado interno */
+    margin-left: 8px;                       /* Espacio a la izquierda */
+    position: relative;                     /* Para posicionar el pseudo-elemento ::before */
+    font-size: 14px;                        /* Tamaño pequeño */
+    font-weight: 600;                       /* Semi-bold */
+    text-transform: uppercase;              /* Mayúsculas */
+    letter-spacing: 1px;                    /* Espacio entre letras */
+    transition: all 0.3s ease;              /* Animación suave de todos los cambios */
+    border-radius: 4px;                     /* Esquinas redondeadas */
+}
+
+
+/* EFECTO SUBRAYADO ANIMADO: Línea que aparece al pasar el mouse */
+.nav a::before {
+    content: '';                                        /* Elemento vacío */
+    position: absolute;                                /* Posicionamiento absoluto */
+    bottom: 0;                                         /* En la parte inferior */
+    left: 50%;                                         /* Centrado horizontalmente */
+    width: 0;                                          /* Ancho inicial: 0 */
+    height: 2px;                                       /* Grosor de la línea */
+    background: linear-gradient(90deg, #00d4ff, #ff006e); /* Gradiente cian a rosa */
+    transition: all 0.3s ease;                         /* Animación suave */
+    transform: translateX(-50%);                       /* Centra la línea */
+}
+
+/* HOVER DEL NAV: Cambios al pasar el mouse */
+.nav a:hover {
+    color: #00d4ff;                         /* Texto cambia a cian */
+    background: rgba(0, 212, 255, 0.1);     /* Fondo con cian semi-transparente */
+    box-shadow: 0 0 12px rgba(0, 212, 255, 0.4); /* Brillo alrededor del enlace */
+}
+
+/* HOVER DEL SUBRAYADO: La línea se expande al pasar el mouse */
+.nav a:hover::before {
+    width: 80%;  /* Expande la línea al 80% */
+}
+
+
+/* HERO: Sección principal introductoria con degradado */
+.hero {
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.05) 0%, rgba(255, 0, 110, 0.05) 100%); /* Degradado muy sutil */
+    padding: 60px 20px;             /* Espaciado interno */
+    text-align: center;             /* Centra el contenido */
+    border-bottom: 2px solid rgba(0, 212, 255, 0.2); /* Borde inferior */
+}
+
+/* TÍTULO PRINCIPAL: Encabezado H1 del hero con gradiente */
+.hero-content h1 {
+    font-size: 48px;                            /* Tamaño muy grande */
+    font-weight: 900;                           /* Peso: extra Bold */
+    margin-bottom: 16px;                        /* Espacio debajo */
+    background: linear-gradient(135deg, #00d4ff, #ff006e); /* Gradiente cian a rosa */
+    -webkit-background-clip: text;              /* Aplica gradiente al texto (webkit) */
+    -webkit-text-fill-color: transparent;       /* Texto transparente (webkit) */
+    background-clip: text;                      /* Aplica gradiente al texto */
+    letter-spacing: -1px;                       /* Espacio negativo entre letras (ajuste) */
+    text-shadow: 0 0 30px rgba(0, 212, 255, 0.2); /* Brillo alrededor del texto */
+}
+
+/* PÁRRAFO HERO: Texto descriptivo bajo el título */
+.hero-content p {
+    font-size: 18px;                /* Tamaño mediano */
+    color: #b0b0b0;                 /* Color gris atenuado */
+    margin-bottom: 30px;            /* Espacio debajo */
+    letter-spacing: 0.5px;          /* Espacio entre letras */
+}
+
+
+/* BANNER PLACEHOLDER: Contenedor para imágenes grandes con efecto hover */
+.placeholder-banner {
+    background: linear-gradient(135deg, #16213e 0%, #1a1a2e 100%); /* Degradado de fondo */
+    height: 320px;                  /* Altura fija */
+    display: flex;                  /* Usa flexbox */
+    align-items: center;            /* Centra verticalmente */
+    justify-content: center;        /* Centra horizontalmente */
+    margin: 30px auto;              /* Márgenes y centrado */
+    border: 2px solid rgba(0, 212, 255, 0.3); /* Borde cian */
+    overflow: hidden;               /* Oculta contenido que salga */
+    border-radius: 16px;            /* Esquinas redondeadas */
+    max-width: 900px;               /* Ancho máximo */
+    box-shadow: 0 20px 50px rgba(0, 212, 255, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1); /* Sombras */
+    position: relative;             /* Para los pseudo-elementos */
+}
+
+/* EFECTO DE BRILLO OVERLAY: Gradiente sutil sobre la imagen */
+.placeholder-banner::before {
+    content: '';                    /* Elemento vacío */
+    position: absolute;             /* Superpuesto */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, transparent 0%, rgba(0, 212, 255, 0.1) 100%); /* Gradiente sutil */
+    pointer-events: none;           /* No interfiere con clics */
+    z-index: 1;                     /* Sobre la imagen */
+}
+
+/* IMAGEN DENTRO DEL BANNER: Rellena el contenedor */
+.placeholder-banner img {
+    width: 100%;                    /* Ancho total */
+    height: 100%;                   /* Alto total */
+    object-fit: cover;              /* Cubre el espacio manteniendo proporción */
+    object-position: center;        /* Centrada */
+    transition: transform 0.4s ease; /* Animación suave */
+}
+
+/* HOVER DEL BANNER: Imagen se amplía */
+.placeholder-banner:hover img {
+    transform: scale(1.05);  /* Aumenta 5% */
+}
+
+
+/* CONTENEDOR: Ancho máximo para las secciones principales */
+.contenedor {
+    max-width: 1250px;  /* Ancho máximo en pantallas grandes */
+    margin: 60px auto;  /* Márgenes verticales y centrado */
+    padding: 0 20px;    /* Espaciado interno horizontal */
+}
+
+/* ENCABEZADO CONTENEDOR: Título de sección con línea decorativa */
+.contenedor h2 {
+    margin-bottom: 40px;            /* Espacio debajo */
+    font-size: 36px;                /* Tamaño grande */
+    font-weight: 800;               /* Extra bold */
+    text-transform: uppercase;      /* Mayúsculas */
+    letter-spacing: 2px;            /* Espacio entre letras */
+    position: relative;             /* Para el pseudo-elemento */
+    padding-bottom: 16px;           /* Espacio para la línea */
+    color: #fff;                    /* Texto blanco */
+}
+
+/* LÍNEA DECORATIVA BAJO TÍTULO: Gradiente con brillo */
+.contenedor h2::after {
+    content: '';                    /* Elemento vacío */
+    position: absolute;             /* Bajo el texto */
+    bottom: 0;
+    left: 0;
+    width: 80px;                    /* Ancho de la línea */
+    height: 4px;                    /* Grosor */
+    background: linear-gradient(90deg, #00d4ff, #ff006e); /* Gradiente */
+    border-radius: 2px;             /* Esquinas redondeadas */
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.5); /* Brillo */
+}
+
+
+/* GRILLA: Sistema de grid responsivo para las tarjetas */
+.grilla {
+    display: grid;                                  /* Usa CSS Grid */
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); /* Columnas adaptativas */
+    gap: 28px;                                      /* Espacio entre tarjetas */
+    margin-bottom: 40px;                            /* Espacio debajo */
+}
+
+
+/* TARJETA: Elemento individual en la grilla con efecto hover */
+.tarjeta {
+    background: linear-gradient(135deg, #16213e 0%, #1a1a2e 100%); /* Fondo degradado */
+    border: 1px solid rgba(0, 212, 255, 0.2);      /* Borde sutil */
+    border-radius: 12px;                           /* Esquinas redondeadas */
+    padding: 20px;                                 /* Espaciado interno */
+    text-align: center;                            /* Centra el contenido */
+    transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1); /* Animación suave con rebote */
+    position: relative;                            /* Para posicionar el overlay */
+    overflow: hidden;                              /* Oculta lo que sobresale */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1); /* Sombras */
+}
+
+/* EFECTO SHINE: Destello que pasa sobre la tarjeta */
+.tarjeta::before {
+    content: '';                    /* Elemento vacío */
+    position: absolute;             /* Superpuesto */
+    top: 0;
+    left: -100%;                    /* Comienza fuera a la izquierda */
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.1), transparent); /* Gradiente brillante */
+    transition: left 0.5s ease;     /* Animación */
+    z-index: 0;                     /* Debajo del contenido */
+}
+
+/* HOVER DE SHINE: Destello pasa al pasar el mouse */
+.tarjeta:hover::before {
+    left: 100%;  /* Se mueve a la derecha */
+}
+
+/* HOVER DE TARJETA: Cambios visuales */
+.tarjeta:hover {
+    border-color: rgba(0, 212, 255, 0.6);   /* Borde más brillante */
+    box-shadow: 0 20px 60px rgba(0, 212, 255, 0.3), 0 0 30px rgba(0, 212, 255, 0.2); /* Sombra aumentada */
+    transform: translateY(-8px);             /* Se eleva 8px */
+}
+
+/* CONTENIDO DE TARJETA: Por encima del overlay */
+.tarjeta > * {
+    position: relative;  /* Relativo al contenedor */
+    z-index: 1;          /* Sobre el overlay */
+}
+
+
+/* IMAGEN TARJETA: Contenedor de foto dentro de la tarjeta */
+.placeholder-foto {
+    background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%); /* Fondo oscuro */
+    height: 180px;                  /* Altura fija */
+    display: flex;                  /* Flexbox para centrado */
+    align-items: center;            /* Centra verticalmente */
+    justify-content: center;        /* Centra horizontalmente */
+    margin-bottom: 20px;            /* Espacio debajo */
+    border: 2px solid rgba(0, 212, 255, 0.2); /* Borde sutil */
+    color: #64748b;                 /* Color de placeholder */
+    overflow: hidden;               /* Oculta lo que sobresale */
+    border-radius: 10px;            /* Esquinas redondeadas */
+    position: relative;             /* Para sombras internas */
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.5), 0 0 16px rgba(0, 212, 255, 0.1); /* Sombras */
+}
+
+/* IMAGEN DENTRO DEL PLACEHOLDER: Se adapta al contenedor */
+.placeholder-foto img {
+    width: 100%;                    /* Ancho total */
+    height: 100%;                   /* Alto total */
+    object-fit: cover;              /* Cubre sin distorsionar */
+    object-position: center;        /* Centrada */
+    transition: transform 0.4s ease; /* Animación suave */
+}
+
+/* HOVER DE IMAGEN: Se amplía al pasar el mouse */
+.tarjeta:hover .placeholder-foto img {
+    transform: scale(1.08);  /* Aumenta 8% */
+}
+
+
+/* TÍTULO TARJETA: Encabezado H3 dentro de la tarjeta */
+.tarjeta h3 {
+    margin-bottom: 12px;            /* Espacio debajo */
+    font-size: 20px;                /* Tamaño mediano-grande */
+    font-weight: 700;               /* Bold */
+    color: #fff;                    /* Texto blanco */
+    letter-spacing: 0.5px;          /* Espacio entre letras */
+    line-height: 1.3;               /* Altura de línea compacta */
+}
+
+/* PÁRRAFO TARJETA: Descripción de la tarjeta */
+.tarjeta p {
+    font-size: 14px;                /* Tamaño pequeño */
+    color: #b0b0b0;                 /* Texto gris */
+    margin-bottom: 20px;            /* Espacio debajo */
+    line-height: 1.6;               /* Altura de línea espaciada */
+    min-height: 40px;               /* Alto mínimo para consistencia */
+}
+
+
+/* BOTÓN: Elemento interactivo con gradiente cian */
+.boton {
+    background: linear-gradient(135deg, #00d4ff, #0099cc); /* Gradiente cian */
+    color: #000;                    /* Texto negro */
+    border: none;                   /* Sin borde */
+    padding: 12px 24px;             /* Espaciado interno */
+    border-radius: 6px;             /* Esquinas redondeadas */
+    cursor: pointer;                /* Cursor de mano */
+    font-weight: 700;               /* Bold */
+    font-size: 14px;                /* Tamaño pequeño */
+    text-transform: uppercase;      /* Mayúsculas */
+    letter-spacing: 1px;            /* Espacio entre letras */
+    transition: all 0.3s ease;      /* Animación suave */
+    position: relative;             /* Para el overlay */
+    overflow: hidden;               /* Oculta lo que sobresale */
+    box-shadow: 0 4px 15px rgba(0, 212, 255, 0.4); /* Sombra */
+}
+
+/* EFECTO SHINE BOTÓN: Destello sobre el botón */
+.boton::before {
+    content: '';                    /* Elemento vacío */
+    position: absolute;             /* Superpuesto */
+    top: 0;
+    left: -100%;                    /* Comienza a la izquierda */
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent); /* Destello blanco */
+    transition: left 0.5s ease;     /* Animación */
+    z-index: 0;                     /* Debajo del texto */
+}
+
+/* HOVER SHINE BOTÓN: Destello pasa al pasar el mouse */
+.boton:hover::before {
+    left: 100%;  /* Se mueve a la derecha */
+}
+
+/* HOVER BOTÓN: Cambios visuales */
+.boton:hover {
+    background: linear-gradient(135deg, #00d4ff, #00f7ff); /* Gradiente más brillante */
+    transform: translateY(-2px);    /* Se eleva ligeramente */
+    box-shadow: 0 8px 25px rgba(0, 212, 255, 0.6), 0 0 20px rgba(0, 212, 255, 0.4); /* Sombra aumentada */
+}
+
+/* ACTIVE BOTÓN: Cuando se hace clic */
+.boton:active {
+    transform: translateY(0);       /* Vuelve a posición original */
+    box-shadow: 0 2px 10px rgba(0, 212, 255, 0.4); /* Sombra menor */
+}
+
+
+/* SECCIÓN INFO: Layout de dos columnas con texto e imagen */
+.info-seccion {
+    display: grid;                  /* Usa CSS Grid */
+    grid-template-columns: 1fr 1fr; /* Dos columnas iguales */
+    gap: 60px;                      /* Espacio entre columnas */
+    align-items: center;            /* Centra verticalmente */
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.05) 0%, rgba(255, 0, 110, 0.05) 100%); /* Fondo sutil */
+    padding: 50px 40px;             /* Espaciado interno */
+    border-radius: 12px;            /* Esquinas redondeadas */
+    border: 1px solid rgba(0, 212, 255, 0.2); /* Borde sutil */
+    box-shadow: 0 12px 40px rgba(0, 212, 255, 0.1); /* Sombra */
+}
+
+/* TEXTO INFO: Columna izquierda con contenido */
+.info-texto h2 {
+    margin-bottom: 30px;            /* Espacio debajo */
+    font-size: 32px;                /* Tamaño grande */
+}
+
+/* LISTA INFO: Lista con viñetas personalizadas */
+.info-texto ul {
+    list-style: none;  /* Quita viñetas predeterminadas */
+}
+
+/* ELEMENTOS LISTA: Cada elemento de la lista */
+.info-texto li {
+    margin-bottom: 20px;            /* Espacio entre elementos */
+    padding-left: 28px;             /* Espacio para la viñeta */
+    position: relative;             /* Para posicionar la viñeta */
+    font-size: 16px;                /* Tamaño texto */
+    line-height: 1.8;               /* Altura de línea espaciada */
+    color: #e8e8e8;                 /* Texto claro */
+}
+
+/* VIÑETA PERSONALIZADA: Símbolo triangular */
+.info-texto li::before {
+    content: '▸';                   /* Triángulo */
+    position: absolute;             /* Posicionamiento */
+    left: 0;
+    color: #00d4ff;                 /* Color cian */
+    font-size: 18px;                /* Tamaño de viñeta */
+    font-weight: bold;              /* Negrita */
+}
+
+/* TEXTO DESTACADO: Palabras clave en cian */
+.info-texto strong {
+    color: #00d4ff;                 /* Color cian */
+    font-weight: 700;               /* Bold */
+}
+
+
+/* COLUMNA IMAGEN: Contenedor para la imagen grande */
+.info-imagen {
+    perspective: 1000px;  /* Efecto 3D (aunque no se usa mucho aquí) */
+}
+
+/* IMAGEN GRANDE: Contenedor principal de foto */
+.placeholder-grande {
+    background: linear-gradient(135deg, #16213e 0%, #1a1a2e 100%); /* Fondo degradado */
+    height: 300px;                  /* Altura fija */
+    display: flex;                  /* Flexbox para centrado */
+    align-items: center;            /* Centra verticalmente */
+    justify-content: center;        /* Centra horizontalmente */
+    border: 2px solid rgba(0, 212, 255, 0.3); /* Borde cian */
+    overflow: hidden;               /* Oculta lo que sobresale */
+    border-radius: 12px;            /* Esquinas redondeadas */
+    box-shadow: 0 20px 50px rgba(0, 212, 255, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1); /* Sombras */
+    transition: all 0.4s ease;      /* Animación suave */
+    position: relative;             /* Para el overlay */
+}
+
+/* OVERLAY IMAGEN GRANDE: Gradiente sutil sobre la imagen */
+.placeholder-grande::before {
+    content: '';                    /* Elemento vacío */
+    position: absolute;             /* Superpuesto */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, transparent 0%, rgba(0, 212, 255, 0.1) 100%); /* Gradiente sutil */
+    pointer-events: none;           /* No interfiere con clics */
+    z-index: 1;                     /* Sobre la imagen */
+}
+
+/* IMAGEN DENTRO DEL PLACEHOLDER: Rellena el contenedor */
+.placeholder-grande img {
+    width: 100%;                    /* Ancho total */
+    height: 100%;                   /* Alto total */
+    object-fit: cover;              /* Cubre manteniendo proporción */
+    object-position: center;        /* Centrada */
+    transition: transform 0.4s ease; /* Animación suave */
+}
+
+/* HOVER DE IMAGEN GRANDE: Efectos al pasar el mouse */
+.info-imagen:hover .placeholder-grande {
+    box-shadow: 0 30px 70px rgba(0, 212, 255, 0.25), 0 0 30px rgba(0, 212, 255, 0.3); /* Sombra aumentada */
+    border-color: rgba(0, 212, 255, 0.5); /* Borde más brillante */
+}
+
+/* HOVER IMAGEN: Se amplía al pasar el mouse */
+.info-imagen:hover .placeholder-grande img {
+    transform: scale(1.05);  /* Aumenta 5% */
+}
+
+
+/* FOOTER: Pie de página con información y enlaces */
+.footer {
+    background: linear-gradient(90deg, #1a1a2e 0%, #16213e 100%); /* Degradado horizontal */
+    color: #e8e8e8;                 /* Texto claro */
+    text-align: center;             /* Centrado */
+    padding: 50px 20px;             /* Espaciado interno */
+    margin-top: 60px;               /* Margen superior */
+    border-top: 2px solid rgba(0, 212, 255, 0.2); /* Borde superior */
+    box-shadow: inset 0 2px 20px rgba(0, 212, 255, 0.1); /* Sombra interna */
+}
+
+/* PÁRRAFO FOOTER: Texto principal */
+.footer p {
+    font-size: 16px;                /* Tamaño medio */
+    margin-bottom: 20px;            /* Espacio debajo */
+    font-weight: 600;               /* Semi-bold */
+    color: #b0b0b0;                 /* Texto gris */
+}
+
+/* ELEMENTOS LISTA FOOTER: Enlaces o elementos de lista */
+.footer li {
+    list-style: none;               /* Sin viñetas */
+    font-size: 14px;                /* Tamaño pequeño */
+    margin-bottom: 8px;             /* Espacio entre elementos */
+    color: #b0b0b0;                 /* Texto gris */
+    transition: all 0.3s ease;      /* Animación suave */
+    padding: 6px 0;            /* Espaciado vertical */
+}
+
+/* HOVER ELEMENTOS FOOTER: Cambios al pasar el mouse */
+.footer li:hover {
+    color: #00d4ff;                 /* Cambia a cian */
+    text-shadow: 0 0 10px rgba(0, 212, 255, 0.4); /* Brillo */
+}
+
+/* STRONG FOOTER: Texto destacado en cian */
+.footer li strong {
+    color: #00d4ff;                 /* Color cian */
+    font-weight: 700;               /* Bold */
+}
+
+
+/* MEDIA QUERY: Pantallas tablet (hasta 1024px) */
+@media (max-width: 1024px) {
+    /* En tablets: cambia a una sola columna */
+    .info-seccion {
+        grid-template-columns: 1fr;  /* Una sola columna */
+        gap: 40px;                   /* Espacio reducido */
+    }
+
+    /* Header más compacto */
+    .header {
+        padding: 15px 25px;  /* Padding reducido */
+    }
+
+    /* Logo más pequeño */
+    .logo {
+        font-size: 22px;  /* Tamaño reducido */
+    }
+
+    /* Enlaces de navegación más pequeños */
+    .nav a {
+        margin-left: 5px;   /* Margen reducido */
+        padding: 8px 12px;  /* Padding reducido */
+        font-size: 12px;    /* Tamaño más pequeño */
+    }
+
+    /* Grilla de tarjetas se ajusta */
+    .grilla {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Columnas más pequeñas */
+        gap: 20px;                   /* Espacio reducido */
+    }
+}
+
+
+/* MEDIA QUERY: Pantallas móviles (hasta 768px) */
+@media (max-width: 768px) {
+    /* Título hero más pequeño para móvil */
+    .hero-content h1 {
+        font-size: 36px;  /* Reducido de 48px */
+    }
+
+    /* Encabezados de sección más pequeños */
+    .contenedor h2 {
+        font-size: 28px;  /* Reducido de 36px */
+    }
+
+    /* Grilla: una sola columna en móvil */
+    .grilla {
+        grid-template-columns: 1fr;  /* Solo 1 columna */
+    }
+
+    /* Navegación vertical en móvil */
+    .nav {
+        flex-direction: column;  /* Apila verticalmente */
+        gap: 0;                  /* Sin espacio */
+    }
+
+    /* Enlace de navegación: ancho completo */
+    .nav a {
+        margin-left: 0;    /* Sin margen */
+        padding: 10px;     /* Padding uniforme */
+        width: 100%;       /* Ancho completo */
+        text-align: center; /* Centrado */
+    }
+
+    /* Header en columna en móvil */
+    .header {
+        flex-direction: column;  /* Apila verticalmente */
+        gap: 20px;              /* Espacio entre elementos */
+        padding: 15px;          /* Padding reducido */
+    }
+
+    /* Logo un poco más grande en móvil */
+    .logo {
+        font-size: 24px;  /* Ajuste */
+    }
+
+    /* Banner más corto en móvil */
+    .placeholder-banner {
+        height: 200px;  /* Reducido de 320px */
+    }
+
+    /* Imagen grande más pequeña en móvil */
+    .placeholder-grande {
+        height: 250px;  /* Reducido de 300px */
+    }
+
+    /* Sección info con padding reducido */
+    .info-seccion {
+        padding: 30px 20px;  /* Reducido de 50px 40px */
+        gap: 30px;           /* Espacio reducido de 60px */
+    }
+
+    /* Footer más compacto en móvil */
+    .footer {
+        padding: 30px 15px;  /* Reducido de 50px 20px */
+    }
+}

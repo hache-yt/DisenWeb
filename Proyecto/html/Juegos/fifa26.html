@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIFA 26 - Plataforma de Juegos</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .juego-header {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(255, 0, 110, 0.1) 100%);
+            padding: 50px 20px;
+            margin-top: 20px;
+            border-radius: 12px;
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            box-shadow: 0 20px 50px rgba(0, 212, 255, 0.15);
+        }
+
+        .juego-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .juego-imagen {
+            perspective: 1000px;
+        }
+
+        .juego-imagen img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 30px 60px rgba(0, 212, 255, 0.3), 0 0 40px rgba(0, 212, 255, 0.2);
+            border: 2px solid rgba(0, 212, 255, 0.4);
+            transition: all 0.4s ease;
+        }
+
+        .juego-imagen img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 40px 80px rgba(0, 212, 255, 0.4), 0 0 50px rgba(0, 212, 255, 0.3);
+        }
+
+        .juego-info h1 {
+            font-size: 42px;
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+            background: linear-gradient(135deg, #00d4ff, #ff006e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .juego-detalles {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .detalle-item {
+            background: linear-gradient(135deg, #16213e 0%, #1a1a2e 100%);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+        }
+
+        .detalle-item strong {
+            color: #00d4ff;
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .detalle-item p {
+            color: #e8e8e8;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .descripcion {
+            color: #b0b0b0;
+            font-size: 16px;
+            line-height: 1.8;
+            margin: 25px 0;
+        }
+
+        .caracteristicas {
+            background: linear-gradient(135deg, #16213e 0%, #1a1a2e 100%);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            box-shadow: 0 12px 40px rgba(0, 212, 255, 0.1);
+            margin: 30px 0;
+        }
+
+        .caracteristicas h3 {
+            color: #00d4ff;
+            font-size: 20px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .caracteristicas ul {
+            list-style: none;
+        }
+
+        .caracteristicas li {
+            padding: 12px 0;
+            padding-left: 28px;
+            position: relative;
+            color: #e8e8e8;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .caracteristicas li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #ff006e;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .botones-accion {
+            display: flex;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .boton-comprar {
+            background: linear-gradient(135deg, #ff006e, #ff3385);
+            color: #fff;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(255, 0, 110, 0.4);
+        }
+
+        .boton-comprar:hover {
+            background: linear-gradient(135deg, #ff3385, #ff5fa8);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(255, 0, 110, 0.6);
+        }
+
+        .boton-volver {
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            color: #000;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.4);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .boton-volver:hover {
+            background: linear-gradient(135deg, #00d4ff, #00f7ff);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0, 212, 255, 0.6);
+        }
+
+        .rating {
+            font-size: 28px;
+            color: #ffd700;
+            letter-spacing: 2px;
+            margin: 20px 0;
+        }
+
+        .precio {
+            font-size: 32px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #00d4ff, #ff006e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 20px 0;
+        }
+
+        @media (max-width: 1024px) {
+            .juego-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .juego-detalles {
+                grid-template-columns: 1fr;
+            }
+
+            .juego-info h1 {
+                font-size: 32px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .botones-accion {
+                flex-direction: column;
+            }
+
+            .boton-comprar, .boton-volver {
+                width: 100%;
+                text-align: center;
+            }
+
+            .juego-info h1 {
+                font-size: 24px;
+            }
+
+            .precio {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo">Gamer plataforma</div>
+        <nav class="nav">
+            <a href="../index.html">Inicio</a>
+            <a href="../index.html">Juegos</a>
+            <a href="#">Categorías</a>
+            <a href="#">Contacto</a>
+        </nav>
+    </header>
+
+    <section class="contenedor juego-header">
+        <div class="juego-container">
+            <div class="juego-imagen">
+                <img src="../img/fifa.webp" alt="FIFA 26">
+            </div>
+
+            <div class="juego-info">
+                <h1>FIFA 26</h1>
+                
+                <div class="rating">★★★★★</div>
+                <p class="precio">$69.99</p>
+
+                <p class="descripcion">
+                    FIFA 26 es el próximo capítulo de la legendaria serie de simulación de fútbol. Con gráficos mejorados, jugabilidad refinada y nuevas características innovadoras, vive la emoción del fútbol como nunca antes.
+                </p>
+
+                <div class="juego-detalles">
+                    <div class="detalle-item">
+                        <strong>Plataformas</strong>
+                        <p>PlayStation 5, Xbox Series X|S, PC, PlayStation 4, Xbox One</p>
+                    </div>
+                    <div class="detalle-item">
+                        <strong>Clasificación</strong>
+                        <p>PEGI 3 - Para todos los públicos</p>
+                    </div>
+                    <div class="detalle-item">
+                        <strong>Desarrollador</strong>
+                        <p>EA Sports</p>
+                    </div>
+                    <div class="detalle-item">
+                        <strong>Género</strong>
+                        <p>Simulación Deportiva</p>
+                    </div>
+                </div>
+
+                <div class="caracteristicas">
+                    <h3>Características Principales</h3>
+                    <ul>
+                        <li>Gráficos de próxima generación con tecnología HyperMotion</li>
+                        <li>Nuevo sistema de jugabilidad más realista</li>
+                        <li>Modo Ultimate Team con nuevas características</li>
+                        <li>Estadios y equipos licenciados oficialmente</li>
+                        <li>Multijugador online para hasta 22 jugadores</li>
+                        <li>Modo Carrera mejorado con narrativa inmersiva</li>
+                        <li>Personalización profunda de equipos y jugadores</li>
+                    </ul>
+                </div>
+
+                <div class="botones-accion">
+                    <button class="boton-comprar">Comprar Ahora</button>
+                    <a href="../index.html" class="boton-volver">Volver</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>© 2026 Gamer plataforma. Todos los derechos reservados.</p>
+        <li>GRUPO 8</li>
+        <li>Integrantes:</li>
+        <li>Franklin villafuerte obando 100%</li>
+        <li>Rey Kino choquichampi Mendoza 100%</li>
+        <li>Said torres Lozano 100%</li>
+        <li>Daniela Rojas Paucar 100%</li>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</body>
+</html>
