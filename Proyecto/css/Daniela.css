@@ -1,0 +1,297 @@
+.titulo-contacto {
+    margin: 40px 0 30px 0;
+    font-size: 32px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #fff;}
+
+.fila-contacto {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.col-formulario {
+    flex: 1 1 480px;
+}
+
+.col-imagen-contacto {
+    flex: 1 1 350px;
+}
+
+.col-imagen-contacto img {
+    border-radius: 12px;
+    border: 2px solid rgba(0, 212, 255, 0.3);
+}
+
+.fila-inputs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.fila-inputs .campo {
+    flex: 1 1 200px;
+}
+
+.campo input {
+    width: 100%;
+    background: linear-gradient(135deg, #16213e 0%, #1a1a2e 100%);
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    border-radius: 20px;
+    padding: 12px 18px;
+    color: #e8e8e8;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.campo input::placeholder {
+    color: #b0b0b0;
+}
+
+.campo input:focus {
+    outline: none;
+    border-color: #00d4ff;
+    box-shadow: 0 0 12px rgba(0, 212, 255, 0.4);
+}
+
+.mensaje-exito {
+    display: none;
+    background: rgba(0, 212, 255, 0.1);
+    border: 1px solid #00d4ff;
+    color: #00d4ff;
+    border-radius: 8px;
+    padding: 12px 18px;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.caja-contactanos {
+    background: linear-gradient(135deg, #16213e 0%, #1a1a2e 100%);
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    border-radius: 12px;
+    padding: 35px 20px;
+    margin-bottom: 60px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.caja-contactanos h4 {
+    text-align: center;
+    color: #00d4ff;
+    font-size: 22px;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.opciones-contacto {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    flex-wrap: wrap;
+}
+
+.opcion-contacto {
+    text-decoration: none;
+    color: #e8e8e8;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.opcion-contacto img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.opcion-contacto p {
+    font-weight: 700;
+    font-size: 15px;
+}
+
+.opcion-contacto:hover {
+    color: #00d4ff;
+    transform: translateY(-4px);
+}
+
+.contenedor-juego {
+    border: 2px solid rgba(0, 212, 255, 0.4);
+    border-radius: 16px;
+    padding: 40px;
+    margin-bottom: 60px;
+    background: linear-gradient(135deg, #16213e 0%, #1a1a2e 100%);
+    box-shadow: 0 12px 40px rgba(0, 212, 255, 0.1);
+}
+
+.fila-juego {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.col-imagen-juego {
+    flex: 1 1 350px;
+}
+
+.col-imagen-juego img {
+    border-radius: 12px;
+    width: 100%;
+}
+
+.col-info-juego {
+    flex: 2 1 500px;
+}
+
+.col-info-juego h1 {
+    color: #00d4ff;
+    font-size: 30px;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.estrellas {
+    color: #ffe14d;
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.precio-juego {
+    color: #00d4ff;
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 16px;
+}
+
+.descripcion-juego {
+    color: #b0b0b0;
+    margin-bottom: 24px;
+    line-height: 1.7;
+}
+
+.datos-juego {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.dato-juego {
+    background: rgba(0, 212, 255, 0.05);
+    border: 1px solid rgba(0, 212, 255, 0.15);
+    border-radius: 10px;
+    padding: 14px 16px;
+}
+
+.dato-juego h6 {
+    color: #00d4ff;
+    font-size: 14px;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+}
+
+.dato-juego p {
+    font-size: 14px;
+    color: #e8e8e8;
+}
+
+.caracteristicas-juego {
+    background: rgba(0, 212, 255, 0.05);
+    border: 1px solid rgba(0, 212, 255, 0.15);
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin-bottom: 24px;
+}
+
+.caracteristicas-juego h6 {
+    color: #00d4ff;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.caracteristicas-juego ul {
+    list-style: none;
+}
+
+.caracteristicas-juego li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #e8e8e8;
+}
+
+.caracteristicas-juego li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: #00d4ff;
+}
+
+.botones-juego {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.boton-rosa {
+    background: linear-gradient(135deg, #ff006e, #c4005a);
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(255, 0, 110, 0.4);
+}
+
+.boton-rosa:hover {
+    background: linear-gradient(135deg, #ff2f8a, #ff006e);
+    box-shadow: 0 8px 25px rgba(255, 0, 110, 0.6);
+}
+
+.notificacion {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 14px 22px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    z-index: 999;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.notificacion.exito {
+    background: rgba(0, 212, 255, 0.15);
+    border: 1px solid #00d4ff;
+    color: #00d4ff;
+}
+
+.notificacion.error {
+    background: rgba(255, 0, 110, 0.15);
+    border: 1px solid #ff006e;
+    color: #ff006e;
+}
+
+@media (max-width: 768px) {
+    .fila-contacto,
+    .fila-juego {
+        flex-direction: column;
+    }
+
+    .opciones-contacto {
+        gap: 40px;
+    }
+
+    .datos-juego {
+        grid-template-columns: 1fr;
+    }
+
+    .titulo-contacto {
+        font-size: 24px;
+    }
+
+    .contenedor-juego {
+        padding: 20px;
+    }
+}
