@@ -136,6 +136,9 @@
 
 .col-imagen-juego {
     flex: 1 1 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .col-imagen-juego img {
